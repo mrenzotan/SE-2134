@@ -49,7 +49,7 @@ function writeFile() {
 }
 
 function readFile() {
-  return new Promise<string>((resolve, reject) => {
+  return new Promise((resolve: Function, reject: Function) => {
     fs.readFile(FILENAME, 'utf-8')
       .then((filecontent) => {
         resolve(filecontent);
