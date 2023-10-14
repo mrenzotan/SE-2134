@@ -11,7 +11,7 @@ function isNumber(amount: number | string) {
 }
 
 function writeFile() {
-  return new Promise<void | string>((resolve, reject) => {
+  return new Promise((resolve: Function, reject: Function) => {
     function promptInput() {
       const input = readLineSync.question();
 
