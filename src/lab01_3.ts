@@ -12,7 +12,7 @@ function isNumber(amount: number | string) {
 
 async function displayDebtors() {
   try {
-    console.log('\n' + '-'.repeat(100) + '\nHere are the list of debtors: ');
+    console.log('\n' + '-'.repeat(100) + '\nHere is the list of debtors: ');
     const readFile = await fs.readFile(FILENAME, { encoding: 'utf-8', flag: 'r' });
     console.log(readFile);
   } catch (error) {
@@ -20,7 +20,7 @@ async function displayDebtors() {
   }
 }
 
-async function promptInput() {
+async function promptInput(): Promise<void> {
   const input: string = readLineSync.question();
 
   if (input === 'end') {
