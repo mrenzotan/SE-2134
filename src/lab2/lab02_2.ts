@@ -10,7 +10,7 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
 
   if (url === '/apply-loan') {
     try {
-      const filePath = path.resolve(__dirname, '../apply-loan.html');
+      const filePath = path.resolve('../../apply-loan.html');
       const contents = await fs.readFile(filePath, 'utf-8');
       response.writeHead(200, { 'Content-Type': 'text/html' }).end(contents.toString());
     } catch (error) {
