@@ -49,17 +49,17 @@ while (true) {
   const amount: number = Number(inputArr[1]);
   const name: string | number = inputArr[0];
 
-  if (!isNumber(name) && isNumber(amount)) {
+  if (!isNumber(Number(name)) && isNumber(amount)) {
     fs.writeFile(FILENAME, `${name} - ${amount} \n`, { flag: 'a+' }, callAfterWritingFile);
   }
   if (!isNumber(amount)) {
     console.log('Invalid amount input. Please ensure amount is in number format.');
     continue;
   }
-  if (isNumber(name)) {
+  if (isNumber(Number(name))) {
     console.log('Invalid name input. Please enter a valid name.');
     continue;
   }
-
-  displayDebtors();
 }
+
+displayDebtors();
