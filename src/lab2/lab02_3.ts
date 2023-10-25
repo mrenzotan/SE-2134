@@ -4,9 +4,9 @@ import { Pool } from 'pg';
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'SE2134 - Lab2',
+  database: 'SE2134-Lab2',
   password: '1234554321',
-  port: 5432, // Change if your PostgreSQL server is running on a different port
+  port: 5433, // Change if your PostgreSQL server is running on a different port
 });
 
 async function handleRequest(request: IncomingMessage, response: ServerResponse) {
@@ -18,7 +18,7 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
   if (url === '/apply-loan') {
     try {
       const dynamicHTML = `
-        <form action="/apply-loan-success">
+        <form action="/apply-loan-success" method="post">
           Name: <input type="text" name="name" /><br />
           Email: <input type="text" name="email" /><br />
           Phone: <input type="text" name="phone" /><br />
@@ -36,7 +36,7 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
     } catch (error) {
       response.writeHead(500).end('Internal Server Error');
     }
-  } else if (url === '/apply-loan-success') {
+  } else if (url === '/apply-loan-success' && method === 'POST') {
     try {
       let body: string = '';
       request.on('data', (chunk) => {
@@ -82,9 +82,6 @@ async function handleRequest(request: IncomingMessage, response: ServerResponse)
         } finally {
           client.release();
         }
-
-        response.writeHead(200, { 'Content-Type': 'text/html' });
-        response.end('Form submitted successfully!');
       });
     } catch (error) {
       response.writeHead(500).end('Internal Server Error');
