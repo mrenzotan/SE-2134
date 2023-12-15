@@ -1,7 +1,6 @@
 import http, { IncomingMessage, ServerResponse } from 'node:http';
 import { Pool } from 'pg';
 import crypto from 'node:crypto';
-import { format } from 'node:path';
 
 const pool = new Pool({
   user: 'postgres',
